@@ -136,29 +136,42 @@ end.
 
 ## Results
 
-**How far can current LLMs get on RetailBridge?** Ten backbones evaluated under
-RetailRAG on the full 1,680-question benchmark (all with `Qwen3-Embedding-8B`
-dense retrieval, top-10). The score is **LLM-as-judge** accuracy (`Qwen3.6-Plus`)
-over all 1,680 questions; **API/query** is the mean LLM calls per question.
+**How far can current LLMs get on RetailBridge?** Sixteen backbones evaluated under
+RetailRAG on the full 1,680-question benchmark, all with `Qwen3-Embedding-8B` dense
+retrieval (top-10). The score is **LLM-as-judge** accuracy (`Muse Ember`) over all
+1,680 questions, and **API/query** is the mean number of LLM calls per question.
 
 | Backbone | Type | LLM-judge | API/query |
 |:--|:--:|:--:|:--:|
-| Qwen3.6-Plus | prop. | **0.511** | 6.92 |
-| GPT-5.4 | prop. | 0.508 | 7.28 |
-| Gemma-4-31B-IT | open | 0.498 | 10.50 |
-| DeepSeek-V4-Pro | open | 0.466 | 9.68 |
-| DeepSeek-V4-Flash | open | 0.449 | 8.88 |
-| GPT-oss-120B | open | 0.429 | 7.45 |
-| Qwen3.6-Flash | prop. | 0.390 | 7.32 |
-| Gemini-3.1-Flash | prop. | 0.358 | 9.72 |
-| Kimi-K2.5 | open | 0.255 | 11.81 |
-| Qwen3.6-35B-A3B | open | 0.236 | 12.76 |
+| GPT-6.1-Terra | prop. | **0.574** | 4.58 |
+| MiMo-V2.6-Flash | open | 0.529 | 6.76 |
+| Claude-Haiku-5.5 | prop. | 0.518 | 6.44 |
+| Qwen3.6-Plus | prop. | 0.477 | 6.92 |
+| GPT-6-Luna | prop. | 0.473 | 11.15 |
+| GPT-5.4 | prop. | 0.471 | 7.28 |
+| Gemma-4-31B-IT | open | 0.465 | 10.46 |
+| MiMo-V2.6-Pro | open | 0.460 | 8.09 |
+| GLM-5.3-Flash | open | 0.458 | 8.94 |
+| DeepSeek-V4-Pro | open | 0.436 | 9.56 |
+| DeepSeek-V4-Flash | open | 0.424 | 8.76 |
+| GPT-oss-120B | open | 0.399 | 7.44 |
+| Qwen3.6-Flash | prop. | 0.382 | 7.32 |
+| Gemini-3.1-Flash | prop. | 0.330 | 9.72 |
+| Kimi-K2.5 | open | 0.246 | 11.81 |
+| Qwen3.6-35B-A3B | open | 0.221 | 12.76 |
 
-Even the strongest backbones clear only **about half** the benchmark
-(Qwen3.6-Plus 0.511, GPT-5.4 0.508), a small open model nearly matches them
-(Gemma-4-31B-IT 0.498), and every model drops sharply from Level-1 to Level-3
-— **RetailBridge stays unsolved for frontier LLMs.** Per-level,
-per-source numbers are Table 4 in the paper.
+Even the strongest backbone answers only **57.4%** of the questions
+(GPT-6.1-Terra), with the best open model at 52.9% (MiMo-V2.6-Flash). Every model
+drops sharply from Level-1 to Level-3, by 22 to 51 points, so
+**RetailBridge stays unsolved for frontier LLMs.** Per-level and per-source numbers
+are on the [project page](https://retailbridge-kdd.github.io).
+
+> [!NOTE]
+> All scores in this repository are judged by Muse Ember, so they differ slightly
+> from the tables in the paper, which used Qwen3.6-Plus as the judge. Re-judging with
+> Muse Ember left the backbone ranking and RetailRAG's lead over every baseline
+> unchanged, and we found no meaningful score shift or model-specific bias between
+> the two judges. We nonetheless adopt Muse Ember for every reported result.
 
 <details>
 <summary>RetailRAG vs. six RAG baselines (fixed <code>gpt-oss-120b</code> backbone)</summary>
@@ -169,13 +182,13 @@ benchmark:
 
 | | Method | LLM-judge |
 |:--|:--|:--:|
-| *Naive* | Text-to-SQL | 0.182 |
-| | Dense RAG | 0.115 |
-| *Agentic* | ReAct | 0.085 |
-| | MAC-SQL | 0.201 |
-| | TableRAG | 0.185 |
-| | HetaRAG | 0.293 |
-| **Ours** | **RetailRAG** | **0.429** |
+| *Naive* | Text-to-SQL | 0.166 |
+| | Dense RAG | 0.097 |
+| *Agentic* | ReAct | 0.071 |
+| | MAC-SQL | 0.198 |
+| | TableRAG | 0.157 |
+| | HetaRAG | 0.274 |
+| **Ours** | **RetailRAG** | **0.399** |
 </details>
 
 ---
