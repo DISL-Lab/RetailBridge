@@ -1,0 +1,22 @@
+# Benchmark data (downloaded from Hugging Face by scripts/download_data.py)
+# and the retrieval index built locally.
+data/
+
+# Evaluation results
+results/*
+!results/.gitkeep
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
