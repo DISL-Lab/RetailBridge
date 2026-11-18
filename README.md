@@ -6,6 +6,8 @@ Jeonghwan Choi¹ &nbsp;·&nbsp; Jibin Hwang¹ &nbsp;·&nbsp; Hayoon Park¹ &nbsp
 
 <sub>¹ KAIST &nbsp;·&nbsp; ² GS Retail</sub>
 
+**Accepted at KDD 2027 (Datasets and Benchmarks Track).**
+
 [**Paper**](https://arxiv.org/abs/2610.25096) &nbsp;·&nbsp; [**Dataset**](https://huggingface.co/datasets/DISLab/RetailBridge) &nbsp;·&nbsp; [**Project page**](https://retailbridge-kdd.github.io)
 
 **RetailBridge** — a multi-source question-answering benchmark for enterprise
