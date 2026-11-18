@@ -9,7 +9,7 @@ Field mapping
 -------------
     hops          <- reasoning_level      (1 / 2 / 3)
     type          <- evidence_modality    (sql-only / text-only / composite)
-    sources_used  <- sources              (gold evidence sources, used for routing F1)
+    sources_used  <- sources              (gold evidence sources, in hop order)
 """
 import json
 from pathlib import Path

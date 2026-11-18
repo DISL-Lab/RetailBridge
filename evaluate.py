@@ -164,10 +164,12 @@ def main() -> None:
                         "by default so KPIs must be derived from base tables)")
 
     # agent settings
-    p.add_argument("--max-revisions", type=int, default=10)
-    p.add_argument("--per-step-revisions", type=int, default=3)
-    p.add_argument("--enable-plan-retry", action="store_true", help="best-of-2 plan retry")
-    p.add_argument("--retry-trigger-mode", choices=["basic", "expanded"], default="basic")
+    # defaults are the settings behind the reported results
+    p.add_argument("--max-revisions", type=int, default=2)
+    p.add_argument("--per-step-revisions", type=int, default=2)
+    p.add_argument("--no-plan-retry", dest="enable_plan_retry", action="store_false",
+                   help="turn off the best-of-2 plan retry (on by default)")
+    p.add_argument("--retry-trigger-mode", choices=["basic", "expanded"], default="expanded")
     p.add_argument("--kb-path", default=None, help="optional domain-knowledge text file")
     p.add_argument("--db-block-cache", default=None,
                    help="schema-briefing cache path (default: data/index/db_block_<model>.txt)")
